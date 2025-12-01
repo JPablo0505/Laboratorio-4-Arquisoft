@@ -1,0 +1,28 @@
+type Query {
+  getAllClients: [Client]
+  getClientById(id: ID!): Client
+  getCredit(id: ID!): Credit
+  getCreditsByCategory(category: String!): [Credit]
+}
+
+type Mutation {
+  createClient(name: String!): Client
+  createCredit(clientId: ID!, amount: Float!, category: String!): Credit
+  updateCreditStatus(id: ID!, status: String!): Credit
+}
+
+type Client {
+  id: ID!
+  name: String!
+  credits: [Credit]
+}
+
+type Credit {
+  id: ID!
+  amount: Float!
+  category: String!
+  status: String!
+  requestDate: String!
+  approvalDate: String
+  client: Client!
+}
